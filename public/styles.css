@@ -3,11 +3,16 @@ body {
   background-color: lightblue;
 }
 
+.container {
+  display: flex;
+  align-items: center;
+}
+
 .apple-pay-button {
   -webkit-appearance: -apple-pay-button;
   -apple-pay-button-type: plain;
   -apple-pay-button-style: black;
   -webkit-appearance: -apple-pay-button;
-  width: 100%;
+  width: 200px;
   height: 50px;
 }
