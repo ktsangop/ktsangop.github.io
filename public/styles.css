@@ -6,7 +6,7 @@ body {
 .container {
   padding: 2rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .apple-pay-button {

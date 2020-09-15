@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+      function send() {
+        window.webkit.messageHandlers.Ti.postMessage({ message: 'Titanium rocks!' },'*');
+      }
+    </script>
     <link rel="stylesheet" href="./public/styles.css"/>
   </head>
   <body>
     <div class="container">
       <button class="apple-pay-button"></button>
+      <button style="width: 200px; height: 50px; background-color:red; color:white"
+      onclick="send()">Test message</button>
     </div>
   </body>
 </html>
