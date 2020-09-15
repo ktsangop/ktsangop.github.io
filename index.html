@@ -1,9 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="require.js"></script>
     <script>
       function send() {
-        window.webkit.messageHandlers.Ti.postMessage({ message: 'Titanium rocks!' },'*');
+
+        
+        if (!!window.webkit && !!window.webkit.messageHandlers && !!window.webkit.messageHandlers.Ti) {
+          window.webkit.messageHandlers.Ti.postMessage({ message: 'Titanium rocks!' },'*');
+        } else {
+          document.body.append(' window.webkit is undefined ');
+
+          var WK = require(['ti.wkwebview']);      
+          if (!WK.fireEvent) {
+            document.body.append(' WK is undefined ');
+          }    
+          // Fire event
+          WK.fireEvent('myEvent', { message: 'Titanium rocks!' });
+          // Listen to events
+          // WK.addEventListener('myEvent', function(e) { console.log('web app received message', e) });
+        }
+
+
       }
     </script>
     <link rel="stylesheet" href="./public/styles.css"/>
