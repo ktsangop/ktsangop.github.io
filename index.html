@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="./prism.css">
+    <script src="./prism.js"></script>
+    <script>
+      window.addEventListener('ftsCustomEventApplePayClosed', function () {
+        window.alert('Apple pay dismissed by Customer app');
+      });
+      function toggleCode() {
+        document.getElementById('sourceCode').classList.toggle('expand');
+      }
+    </script>
     <link rel="stylesheet" href="./public/styles.css"/>
   </head>
   <body>
@@ -8,5 +18,33 @@
       <button class="apple-pay-button"></button>
       <button id="testButtonID" style="width: 200px; height: 50px; background-color:red; color:white">Test message</button>
     </div>
+
+    <button onclick="toggleCode()">Toggle Code</button>
+    <pre id="sourceCode" class="expansion"><code class="language-javascript">
+// Titanium app code to listen to Angular event (on apple pay clicked): 
+webView.addEventListener('load', function(e) {
+    webview.evalJS(`(function(){
+        window.addEventListener('ftsCustomEventApplePayClicked', (event) => {
+            // Add here your code: event.details will include any data we want to pass from page to webview
+        });
+    })();`);
+});
+
+// Titanium app code to send event to Angular that Apple pay closed/dismissed
+webview.evalJS(`(function(){
+  var ev = new CustomEvent('ftsCustomEventApplePayClosed', { detail: 'add details here like dismissed/success' });
+  window.dispatchEvent(ev);
+})();`);
+
+// Angular code to send event to customer app (on apple pay click)
+let ev = new CustomEvent('ftsCustomEventApplePayClicked', { detail: 'add details here like order due!' });
+window.dispatchEvent(ev);
+
+// Angular code to listen to close apple pay event from customer app
+window.addEventListener('ftsCustomEventApplePayClosed', function () {
+  window.alert('Apple pay dismissed by Customer app');
+});
+    </code></pre>
+
   </body>
 </html>
