@@ -10,13 +10,17 @@
       function toggleCode() {
         document.getElementById('sourceCode').classList.toggle('expand');
       }
+      function buttonClicked() {
+        var ev = new CustomEvent('ftsCustomEventApplePayClicked', { detail: 'add details here like order due!' });
+        window.dispatchEvent(ev);
+      }
     </script>
     <link rel="stylesheet" href="./public/styles.css"/>
   </head>
   <body>
     <div class="container">
       <button class="apple-pay-button"></button>
-      <button id="testButtonID" style="width: 200px; height: 50px; background-color:red; color:white">Test message</button>
+      <button onclick="buttonClicked()" id="testButtonID" style="width: 200px; height: 50px; background-color:red; color:white">Test message</button>
     </div>
 
     <button onclick="toggleCode()">Toggle Code</button>
