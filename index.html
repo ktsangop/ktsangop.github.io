@@ -14,6 +14,12 @@
         var ev = new CustomEvent('ftsCustomEventApplePayClicked', { detail: 'add details here like order due!' });
         window.dispatchEvent(ev);
       }
+
+      if (window.ApplePaySession && ApplePaySession.canMakePayments()) {
+        setTimeout(() => alert('IT WORKS!'), 2000);
+      } else {
+        setTimeout(() => alert(`ApplePaySession : ${!!window.ApplePaySession}, canMakePayments(): ${ApplePaySession.canMakePayments()}`), 2000);
+      }
     </script>
     <link rel="stylesheet" href="./public/styles.css"/>
   </head>
