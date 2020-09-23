@@ -14,18 +14,13 @@
         var ev = new CustomEvent('ftsCustomEventApplePayClicked', { detail: 'add details here like order due!' });
         window.dispatchEvent(ev);
       }
-
-      if (window.ApplePaySession && ApplePaySession.canMakePayments()) {
-        setTimeout(() => alert('IT WORKS!'), 2000);
-      } else {
-        setTimeout(() => alert(`ApplePaySession : ${!!window.ApplePaySession}, canMakePayments(): ${ApplePaySession.canMakePayments()}`), 2000);
-      }
     </script>
+    <script src="apple-pay.js"></script>
     <link rel="stylesheet" href="./public/styles.css"/>
   </head>
   <body>
     <div class="container">
-      <button class="apple-pay-button"></button>
+      <button onclick="onApplePayClicked()" class="apple-pay-button"></button>
       <button onclick="buttonClicked()" id="testButtonID" style="width: 200px; height: 50px; background-color:red; color:white">Test message</button>
     </div>
 
