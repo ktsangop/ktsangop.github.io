@@ -6,6 +6,8 @@ function fetchAPI() {
   var onFufillment = [];
   var onError = [];
   var onCompletion = [];
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
   var method = "POST" || options.method;
   xhr.onreadystatechange = function () {
       var _data = this;
