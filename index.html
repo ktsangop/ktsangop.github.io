@@ -15,7 +15,9 @@
       }
 
       function resolve(token) {
-        var storeReq = fetchAPI('https://www.google.com/recaptcha/api/siteverify', null, {secret: '6LfANQoaAAAAAF8F0TFSfkk6LYeqycDfmAZRhlEl', response: token});
+        var storeReq = 
+          fetchAPI('https://www.google.com/recaptcha/api/siteverify', null, 
+            {secret: '**************************************', response: token});
         let storeObject;
         storeReq
           .then(function (response) {
