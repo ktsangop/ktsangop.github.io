@@ -6,8 +6,6 @@ function fetchAPI() {
   var onFufillment = [];
   var onError = [];
   var onCompletion = [];
-  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
   var method = "POST" || options.method;
   xhr.onreadystatechange = function () {
       var _data = this;
@@ -29,6 +27,8 @@ function fetchAPI() {
       }
   };
   xhr.open(method, url, true);
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
   xhr.send(JSON.stringify(payload));
 
   return {
